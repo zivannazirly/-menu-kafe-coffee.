@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kopi Senja | Coffee Menu</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f2e9;
+      color: #38271e;
+    }
+
+    header {
+      background: #38271e;
+      color: white;
+      text-align: center;
+      padding: 32px 16px;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 34px;
+    }
+
+    header p { color: #e2c9a8; }
+
+    .hero {
+      min-height: 220px;
+      padding: 45px 20px;
+      text-align: center;
+      background: #dfc5a3;
+    }
+
+    .hero h2 { font-size: 30px; }
+
+    .menu {
+      max-width: 1000px;
+      margin: auto;
+      padding: 28px 16px;
+    }
+
+    .filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .filters button {
+      border: 1px solid #65432f;
+      background: transparent;
+      color: #38271e;
+      padding: 10px 16px;
+      border-radius: 22px;
+      cursor: pointer;
+    }
+
+    .filters button.active,
+    .order {
+      background: #65432f;
+      color: white;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px #38271e12;
+    }
+
+    .card img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+    }
+
+    .info { padding: 16px; }
+
+    .info h3 { margin: 0 0 8px; }
+
+    .price {
+      color: #805433;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .order {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      padding: 11px;
+      border-radius: 8px;
+      margin-top: 14px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #38271e;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>☕ KOPI SENJA</h1>
+  <p>Good Coffee, Good Mood.</p>
+</header>
+
+<section class="hero">
+  <h2>Nikmati Kopi Favoritmu</h2>
+  <p>Dibuat dengan cinta, disajikan untukmu.</p>
+</section>
+
+<main class="menu">
+  <h2 style="text-align:center">Menu Kami</h2>
+
+  <div class="filters">
+    <button class="active" onclick="filterMenu('all', this)">Semua</button>
+    <button onclick="filterMenu('coffee', this)">Coffee</button>
+    <button onclick="filterMenu('noncoffee', this)">Non-Coffee</button>
+    <button onclick="filterMenu('snack', this)">Snack</button>
+  </div>
+
+  <div class="products">
+    <article class="card" data-category="coffee">
+      <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600" alt="Iced latte">
+      <div class="info">
+        <h3>Ice Coffee Latte</h3>
+        <p>Kopi espresso dengan susu creamy.</p>
+        <div class="price">Rp18.000</div>
+        <a class="order" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20ingin%20pesan%20Ice%20Coffee%20Latte">Pesan Sekarang</a>
+      </div>
+    </article>
+
+    <article class="card" data-category="coffee">
+      <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600" alt="Hot coffee">
+      <div class="info">
+        <h3>Americano</h3>
+        <p>Kopi hitam dengan rasa yang khas.</p>
+        <div class="price">Rp15.000</div>
+        <a class="order" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20ingin%20pesan%20Americano">Pesan Sekarang</a>
+      </div>
+    </article>
+
+    <article class="card" data-category="noncoffee">
+      <img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=600" alt="Matcha latte">
+      <div class="info">
+        <h3>Matcha Latte</h3>
+        <p>Matcha lembut dengan susu segar.</p>
+        <div class="price">Rp20.000</div>
+        <a class="order" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20ingin%20pesan%20Matcha%20Latte">Pesan Sekarang</a>
+      </div>
+    </article>
+
+    <article class="card" data-category="snack">
+      <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600" alt="Roti">
+      <div class="info">
+        <h3>Fresh Bakery</h3>
+        <p>Camilan lezat untuk teman ngopi.</p>
+        <div class="price">Rp12.000</div>
+        <a class="order" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20ingin%20pesan%20Fresh%20Bakery">Pesan Sekarang</a>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Kopi Senja Coffee Shop</p>
+  <p>Buka setiap hari | 09.00–22.00</p>
+</footer>
+
+<script>
+  function filterMenu(category, button) {
+    document.querySelectorAll('.card').forEach(card => {
+      card.style.display =
+        category === 'all' ||
+        card.dataset.category === category
+          ? ''
+          : 'none';
+    });
+
+    document.querySelectorAll('.filters button')
+      .forEach(btn => btn.classList.remove('active'));
+
+    button.classList.add('active');
+  }
+</script>
